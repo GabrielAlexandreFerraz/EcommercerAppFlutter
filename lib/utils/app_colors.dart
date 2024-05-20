@@ -8,6 +8,7 @@ class AppColors {
   static const grayLightColor = Color(0xFFCCCCCC);
   static const brownColor = Color(0xFF1D1617);
   static const greenColor = Color(0xFF182222);
+  static const offWhite = Color(0xFFFFFFE5);
 
   static List<Color> get primaryWhiteAndBlack => [whiteColor, blackColor];
   static List<Color> get primaryGrayAndWhite => [whiteColor, grayMediumColor];

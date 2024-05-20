@@ -6,14 +6,14 @@ import 'package:ecommerceappfluttter/widgets/round_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginScree extends StatefulWidget {
-  const LoginScree({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<LoginScree> createState() => _LoginScreeState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreeState extends State<LoginScree> {
+class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
@@ -101,7 +101,7 @@ class _LoginScreeState extends State<LoginScree> {
                         height: 100,
                         child: ClipOval(
                           child: Image.asset(
-                            'assets/trevo.png',
+                            'assets/icones/trevo.png',
                             width: 100,
                             height: 100,
                             fit: BoxFit
@@ -115,7 +115,7 @@ class _LoginScreeState extends State<LoginScree> {
                       RoundTextField(
                         textEditingController: _emailController,
                         hintText: "Email",
-                        icon: "assets/email.png",
+                        icon: "assets/icones/email.png",
                         textInputType: TextInputType.emailAddress,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -130,7 +130,7 @@ class _LoginScreeState extends State<LoginScree> {
                       RoundTextField(
                         textEditingController: _passController,
                         hintText: "Senha",
-                        icon: "assets/cadeado.png",
+                        icon: "assets/icones/cadeado.png",
                         textInputType: TextInputType.text,
                         isObsecureText: _isObscure,
                         validator: (value) {
@@ -153,8 +153,8 @@ class _LoginScreeState extends State<LoginScree> {
                             width: 20,
                             child: Image.asset(
                               _isObscure
-                                  ? "assets/olhoFechado.png"
-                                  : "assets/olhoAberto.png",
+                                  ? "assets/icones/olhoFechado.png"
+                                  : "assets/icones/olhoAberto.png",
                               width: 20,
                               height: 20,
                               fit: BoxFit.contain,
@@ -217,7 +217,7 @@ class _LoginScreeState extends State<LoginScree> {
                               width: 50,
                               alignment: Alignment.center,
                               child: Image.asset(
-                                "assets/google.png",
+                                "assets/icones/google.png",
                                 height: 60,
                                 width: 60,
                               ),
@@ -231,7 +231,7 @@ class _LoginScreeState extends State<LoginScree> {
                               width: 50,
                               alignment: Alignment.center,
                               child: Image.asset(
-                                "assets/facebook.png",
+                                "assets/icones/facebook.png",
                                 height: 50,
                                 width: 50,
                               ),
