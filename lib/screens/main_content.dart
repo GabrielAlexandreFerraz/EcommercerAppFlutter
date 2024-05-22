@@ -15,9 +15,20 @@ class MainContentScreen extends StatefulWidget {
 
 class _MainContentScreenState extends State<MainContentScreen> {
   int currentSlider = 0;
+  int selectedCategoryIndex = 0; // Índice da categoria selecionada
+
+  List<List<Product>> selectedCategories = [
+    all,
+    shoes,
+    beauty,
+    womens,
+    jewelry,
+    menFashion,
+  ];
 
   @override
   Widget build(BuildContext context) {
+    List<Product> productsToShow = selectedCategories[selectedCategoryIndex];
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
@@ -41,7 +52,14 @@ class _MainContentScreenState extends State<MainContentScreen> {
                 },
               ),
               const SizedBox(height: 10),
-              const Category(),
+              Category(
+                onCategorySelected: (index) {
+                  setState(() {
+                    selectedCategoryIndex = index;
+                  });
+                },
+                selectedIndex: selectedCategoryIndex,
+              ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -76,10 +94,10 @@ class _MainContentScreenState extends State<MainContentScreen> {
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
               return ProductCard(
-                product: products[index],
+                product: productsToShow[index],
               );
             },
-            childCount: products.length,
+            childCount: productsToShow.length,
           ),
         ),
       ],

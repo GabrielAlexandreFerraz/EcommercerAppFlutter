@@ -1,5 +1,6 @@
 import 'package:ecommerceappfluttter/firebase_options.dart';
 import 'package:ecommerceappfluttter/provider/cart_provider.dart';
+import 'package:ecommerceappfluttter/provider/favorite_provider.dart';
 import 'package:ecommerceappfluttter/screens/home_screen.dart';
 import 'package:ecommerceappfluttter/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,6 +18,9 @@ void main() async {
       providers: [
         ChangeNotifierProvider<CartProvider>(
           create: (_) => CartProvider(),
+        ),
+        ChangeNotifierProvider<FavoriteProvider>(
+          create: (_) => FavoriteProvider(),
         ),
       ],
       child: MyApp(),

@@ -1,3 +1,4 @@
+import 'package:ecommerceappfluttter/provider/favorite_provider.dart';
 import 'package:ecommerceappfluttter/screens/detail_screen.dart';
 import 'package:ecommerceappfluttter/utils/app_colors.dart';
 import 'package:ecommerceappfluttter/utils/product_class.dart';
@@ -9,6 +10,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = FavoriteProvider.of(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -103,9 +105,13 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  provider.addToFavorite(product);
+                },
                 child: Icon(
-                  Icons.favorite_border,
+                  provider.isExist(product)
+                      ? Icons.favorite
+                      : Icons.favorite_border,
                   color: Colors.white,
                   size: 22,
                 ),
