@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class FavoriteScreen extends StatefulWidget {
-  const FavoriteScreen({super.key});
+  const FavoriteScreen({Key? key}) : super(key: key);
 
   @override
   State<FavoriteScreen> createState() => _FavoriteScreenState();
@@ -15,6 +15,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   Widget build(BuildContext context) {
     final provider = FavoriteProvider.of(context);
     final finalList = provider.favorites;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -26,9 +27,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         centerTitle: true,
       ),
       body: ListView.builder(
-        // Usando ListView.builder diretamente
-        physics:
-            AlwaysScrollableScrollPhysics(), // Garante que o ListView seja sempre rolável
+        physics: AlwaysScrollableScrollPhysics(),
         itemCount: finalList.length,
         itemBuilder: (context, index) {
           final favoriteItems = finalList[index];
@@ -40,6 +39,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.grey.shade300, width: 1),
                   ),
                   padding: EdgeInsets.all(10),
                   child: Row(
@@ -91,24 +91,19 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               Positioned(
                 top: 35,
                 right: 35,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          finalList.removeAt(index);
-                        });
-                      },
-                      icon: Icon(
-                        Icons.delete,
-                        color: Colors.red,
-                        size: 25,
-                      ),
-                    ),
-                  ],
+                child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      finalList.removeAt(index);
+                    });
+                  },
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                    size: 25,
+                  ),
                 ),
-              )
+              ),
             ],
           );
         },
